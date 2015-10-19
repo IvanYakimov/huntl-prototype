@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "add CVC4 repo..."
+cd /etc/apt/sources.list.d/
+sudo echo 'deb http://cvc4.cs.nyu.edu/debian/ stable/' > cvc4.list
+sudo apt-get update
+
+echo "Install CVC4 API libraries..."
+sudo apt-get install libcvc4-dev libcvc4parser-dev
+
+echo "Install GNU MP library..."
+sudo apt-get install libgmp-dev
+
+echo "Back to the original directory."
+cd -

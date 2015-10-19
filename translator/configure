@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Install CUnit framework..."
+sudo apt-get install libcunit1

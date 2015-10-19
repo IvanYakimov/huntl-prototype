@@ -1,0 +1,130 @@
+codegen.c:
+#include "codegen.h"
+
+codegen.h:
+#include "definitions.h"
+#include "dtl-ast.h"
+#include "global-scope.h"
+#include "suite.h"
+#include "list.h"
+
+c-parser.y:
+#include "definitions.h"
+#include "function.h"
+#include "param.h"
+#include "list.h"
+#include "c-parser.h"
+#include "c-scanner.h"
+
+c-scanner.l:
+#include "scanner.h"
+#include "c-parser.h"
+
+definitions.h:
+
+dtl-ast.c:
+#include "dtl-ast.h"
+
+dtl-ast.h:
+#include "symtable.h"
+
+dtl-parser.y:
+#include "definitions.h"
+#include "list.h"
+#include "value.h"
+#include "test-case.h"
+#include "suite.h"
+#include "global-scope.h"
+#include "codegen.h"
+#include "dtl-parser.h"
+
+dtl-scanner.l:
+#include "scanner.h"
+#include "dtl-ast.h"
+#include "dtl-parser.h"
+
+function.c:
+#include "function.h"
+
+function.h:
+#include "definitions.h"
+#include "list.h"
+#include "param.h"
+
+generate.bat:
+
+global-scope.c:
+#include "function.h"
+#include "global-scope.h"
+
+global-scope.h:
+#include "definitions.h"
+#include "list.h"
+#include "suite.h"
+
+list.c:
+#include "list.h"
+
+list.h:
+#include "definitions.h"
+
+param.c:
+#include "param.h"
+
+param.h:
+#include "definitions.h"
+#include "list.h"
+
+parser.c:
+#include "parser.h"
+
+parser.h:
+#include "definitions.h"
+
+program.c:
+#include "program.h"
+
+program.h:
+#include "definitions.h"
+#include "scanner.h"
+#include "dtl-scanner.h"
+#include "c-scanner.h"
+#include "parser.h"
+#include "dtl-parser.h"
+#include "c-parser.h"
+#include "global-scope.h"
+
+scanner.c:
+#include "scanner.h"
+
+scanner.h:
+#include "definitions.h"
+
+subdir.mk:
+
+suite.c:
+#include "suite.h"
+
+suite.h:
+#include "definitions.h"
+#include "list.h"
+#include "test-case.h"
+#include "codegen.h"
+
+symtable.h:
+
+test-case.c:
+#include "test-case.h"
+
+test-case.h:
+#include "definitions.h"
+#include "list.h"
+#include "value.h"
+#include "codegen.h"
+
+value.c:
+#include "value.h"
+
+value.h:
+#include "definitions.h"
+#include "list.h"
