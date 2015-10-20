@@ -22,7 +22,7 @@ test.o: test.c
 # Run
 run: tester
 	@echo "\033[44m Run Project \033[0m"
-	./tester
+	./tester | nano -
 
 # Clean Up
 clean: 
