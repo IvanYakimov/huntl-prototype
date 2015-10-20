@@ -108,7 +108,7 @@ namespace SOLVER
 	      }
 	    */
 	  }
-	cout << " => ?" << endl;
+	cout << " => ?;" << endl;
       }	  
   }
 

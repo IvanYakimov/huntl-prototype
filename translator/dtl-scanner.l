@@ -36,12 +36,11 @@ ID [a-zA-Z][a-zZ-Z0-9_]*
 
 %%
 
-\n       { return ENDL; }
-
+\n       |
 \t	 |
 \r	 |
 "//".*\n |
-" "	 {;}
+" "	 {/*skip*/;}
 
 {ID}    {
   //lprint(yytext, "id", yylineno);

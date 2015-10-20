@@ -86,7 +86,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %token MIN
 %token MAX
 %token DEFVAL
-%token ENDL
+ //%token ENDL
 
 %type <list> suite_list suite
 %type <list> case_list test_case
@@ -110,8 +110,8 @@ suite_list suite {
 ;
 
 suite:
-ID ':' ENDL case_list {
-  TTestSuite *suite = CreateTestSuite($1, $4);
+ID ':' case_list {
+  TTestSuite *suite = CreateTestSuite($1, $3);
   $$ = CreateListItem(suite); }
 ;
 
@@ -123,10 +123,10 @@ case_list test_case {
 ;
 
 test_case:
-in_list IMP value ENDL { 
+in_list IMP value ';' { 
   TTestCase *testCase = CreateTestCase($1, $3);
   $$ = CreateListItem(testCase); }
-| in_list IMP QMARK ENDL {
+| in_list IMP QMARK ';' {
   // todo: warning
   dtl_warning ("undefined function output, skip the test case");
   $$ = NULL; }
