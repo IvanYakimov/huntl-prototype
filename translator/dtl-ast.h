@@ -3,78 +3,65 @@
 #ifndef _ABSTRACT_SYNTAX_TREE_H
 #define _ABSTRACT_SYNTAX_TREE_H
 
-//#include "dtl-scanner.h"
-
-typedef enum
-{
-    typeFunctionOp,      	/* функция */
-    typeConst,            	/* константа */
-    typeIdentifier,        	/* переменная */
-    typeList,               /* список выражений или операторов */
-	typeImplement,			/* оператор следствия */
+typedef enum {
+  typeFunctionOp,
+  typeConst, // integer value
+  typeIdentifier, // TODO: "phantom" node?
+  typeString, // c string
+  typeList,           
+  typeImplement,		
 } NodeTypeEnum;
 
-
-/* Структура узла Абстрактного синтаксического дерева */
-/* У кажого узла должен быть изначально заданный тип */
-
-typedef struct /*TAbstractSyntaxTreeNode*/
-{
+typedef struct /*TAbstractSyntaxTreeNode*/ {
   NodeTypeEnum nodetype;
   char* opValue;
   struct TAbstractSyntaxTreeNode* left;
   struct TAbstractSyntaxTreeNode* right;
 } NodeAST;
 
-typedef struct
-{
-  NodeTypeEnum nodetype;        /* Тип typeIfStatement */
-  NodeAST* condition;  /* условие */
-  NodeAST* trueBranch; /* операторы true-ветки */
-  NodeAST* elseBranch; /* операторы необязательной false-ветки */
+typedef struct {
+  NodeTypeEnum nodetype;        
+  NodeAST* condition;
+  NodeAST* trueBranch; 
+  NodeAST* elseBranch; 
 } TControlFlowNode;
 
-typedef struct
-{
-  NodeTypeEnum nodetype;			/* Тип K */
+typedef struct {
+  NodeTypeEnum nodetype;
   int value;
 } TNumericValueNode;
+
+// malloc / free !!!
+typedef struct {
+  NodeTypeEnum nodetype;
+  char *value;
+} TStringNode;
 
 #ifndef _SYMBOL_TABLE_H
 #include "symtable.h"
 #endif
 
-typedef struct
-{
+typedef struct {
   NodeTypeEnum nodetype;
   TSymbolTableRecord* function;
 } TSymbolTableReference;
 
-typedef struct
-{
+typedef struct {
   NodeTypeEnum nodetype;
   TSymbolTableRecord* variable;
   NodeAST* value;
 } TFunctionNode;
 
-/* Процедуры формирования Абстрактного синтаксического дерева */
-NodeAST* CreateNodeAST(NodeTypeEnum cmptype, char* opValue,
-//					   SubexpressionValueTypeEnum valueType,
-					   NodeAST* left, NodeAST* right
-					  );
-
+NodeAST* CreateNodeAST(NodeTypeEnum cmptype, char* opValue, NodeAST* left, NodeAST* right);
 NodeAST* CreateIntegerNumberNode(int integerValue);
+NodeAST* CreateStringNode(const char* string);
 NodeAST* CreateFunctionNode(TSymbolTableRecord* symbol, NodeAST *rightValue);
 
-/* Удаление и освобождения памяти Абстрактного синтаксического дерева */
 void FreeAST(NodeAST *);
 
-/* Программный интерфейс с лексером */
-extern int dtl_lineno;       /* номер строки приходит от лексера */
+extern int dtl_lineno;
 void ast_error(char* s, ...);
 
-/* Печать абстрактного синтаксического дерева */
 void PrintAST(NodeAST* aTree, int level);
-
 
 #endif

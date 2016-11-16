@@ -2,12 +2,9 @@
 
 #ifndef _SYMBOL_TABLE_H
 #define _SYMBOL_TABLE_H
-
-/* Структура элемента таблицы символов */
-typedef struct
-{
-  char name;      /* Имя переменной. В текущей реализации один знак */
-  int isDeclared; /* Объявлена ли переменная */
+typedef struct {
+  char name;      
+  int isDeclared; 
 } TSymbolTableRecord;
 
 #endif
